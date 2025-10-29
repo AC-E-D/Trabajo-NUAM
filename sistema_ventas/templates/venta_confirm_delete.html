@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Eliminar Venta</title>
+<link rel="stylesheet" href="{% static 'sistema_ventas/css/style.css' %}">
+<script src="{% static 'sistema_ventas/js/script.js' %}"></script>
+</head>
+<body>
+<h1>Eliminar Venta</h1>
+<p>¿Está seguro de eliminar la venta del {{ venta.fecha }} con total {{ venta.total }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+    <a href="{% url 'venta_list' %}">Cancelar</a>
+</form>
+</body>
+</html>

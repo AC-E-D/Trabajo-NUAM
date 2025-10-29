@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ventas</title>
+<link rel="stylesheet" href="{% static 'sistema_ventas/css/style.css' %}">
+<script src="{% static 'sistema_ventas/js/script.js' %}"></script>
+</head>
+<body>
+<h1>Ventas</h1>
+<a href="{% url 'menu_principal' %}">Volver al menú</a>
+<a href="{% url 'venta_create' %}">Nueva Venta</a>
+<table border="1">
+<tr>
+    <th>ID</th>
+    <th>Fecha</th>
+    <th>Total</th>
+    <th>Acciones</th>
+</tr>
+{% for venta in ventas %}
+<tr>
+    <td>{{ venta.id }}</td>
+    <td>{{ venta.fecha }}</td>
+    <td>{{ venta.total }}</td>
+    <td>
+        <a href="{% url 'venta_delete' venta.id %}">Eliminar</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>

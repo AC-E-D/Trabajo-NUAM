@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>{% if producto %}Editar{% else %}Nuevo{% endif %} Producto</title>
+<link rel="stylesheet" href="{% static 'sistema_ventas/css/style.css' %}">
+<script src="{% static 'sistema_ventas/js/script.js' %}"></script>
+</head>
+<body>
+<h1>{% if producto %}Editar{% else %}Nuevo{% endif %} Producto</h1>
+<a href="{% url 'producto_list' %}">Volver a Productos</a>
+<form method="post">
+    {% csrf_token %}
+    <label>Nombre:</label><br>
+    <input type="text" name="nombre" value="{{ producto.nombre|default_if_none:'' }}" required><br>
+    <label>Descripción:</label><br>
+    <input type="text" name="descripcion" value="{{ producto.descripcion|default_if_none:'' }}" required><br>
+    <label>Precio:</label><br>
+    <input type="number" name="precio" step="0.01" value="{{ producto.precio|default_if_none:'' }}" required><br>
+    <label>Stock:</label><br>
+    <input type="number" name="stock" value="{{ producto.stock|default_if_none:'' }}" required><br><br>
+    <button type="submit">{% if producto %}Actualizar{% else %}Crear{% endif %}</button>
+</form>
+</body>
+</html>

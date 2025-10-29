@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Detalle de Ventas</title>
+<link rel="stylesheet" href="{% static 'sistema_ventas/css/style.css' %}">
+<script src="{% static 'sistema_ventas/js/script.js' %}"></script>
+</head>
+<body>
+<h1>Detalle de Ventas</h1>
+<a href="{% url 'menu_principal' %}">Volver al menú</a>
+<a href="{% url 'detalleventa_create' %}">Nuevo Detalle</a>
+<table border="1">
+<tr>
+    <th>ID</th>
+    <th>Venta</th>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th>Subtotal</th>
+    <th>Acciones</th>
+</tr>
+{% for detalle in detalles %}
+<tr>
+    <td>{{ detalle.id }}</td>
+    <td>{{ detalle.venta.id }}</td>
+    <td>{{ detalle.producto.nombre }}</td>
+    <td>{{ detalle.cantidad }}</td>
+    <td>{{ detalle.subtotal }}</td>
+    <td>
+        <a href="{% url 'detalleventa_delete' detalle.id %}">Eliminar</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>

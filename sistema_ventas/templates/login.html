@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link rel="stylesheet" href="{% static 'sistema_ventas/css/style.css' %}">
+<script src="{% static 'sistema_ventas/js/script.js' %}"></script>
+</head>
+<body>
+<h1>Login</h1>
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    <label>Usuario:</label><br>
+    <input type="text" name="username" required><br>
+    <label>Contraseña:</label><br>
+    <input type="password" name="password" required><br><br>
+    <button type="submit">Ingresar</button>
+</form>
+</body>
+</ht

@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Menú Principal</title>
+<link rel="stylesheet" href="{% static 'sistema_ventas/css/style.css' %}">
+<script src="{% static 'sistema_ventas/js/script.js' %}"></script>
+</head>
+<body>
+<h1>Menú Principal</h1>
+<ul>
+    <li><a href="{% url 'producto_list' %}">Productos</a></li>
+    <li><a href="{% url 'venta_list' %}">Ventas</a></li>
+    <li><a href="{% url 'detalleventa_list' %}">Detalle de Ventas</a></li>
+    <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+</ul>
+</body>
+</html>

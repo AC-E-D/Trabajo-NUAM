@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Productos</title>
+<link rel="stylesheet" href="{% static 'sistema_ventas/css/style.css' %}">
+<script src="{% static 'sistema_ventas/js/script.js' %}"></script>
+</head>
+<body>
+<h1>Productos</h1>
+<a href="{% url 'menu_principal' %}">Volver al menú</a>
+<a href="{% url 'producto_create' %}">Nuevo Producto</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Acciones</th>
+    </tr>
+    {% for producto in productos %}
+    <tr>
+        <td>{{ producto.id }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.precio }}</td>
+        <td>{{ producto.stock }}</td>
+        <td>
+            <a href="{% url 'producto_update' producto.id %}">Editar</a> |
+            <a href="{% url 'producto_delete' producto.id %}">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
